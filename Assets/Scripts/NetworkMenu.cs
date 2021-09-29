@@ -11,6 +11,9 @@ public class NetworkMenu : NetworkBehaviour
     [SerializeField] 
     private GameObject _sceneCamera;
 
+    [SerializeField] 
+    private Game _game;
+    
     private string _passwordToEnter = "";
     
     public void Host()
@@ -38,13 +41,14 @@ public class NetworkMenu : NetworkBehaviour
         _menuPanel.SetActive(false);
         _sceneCamera.SetActive(false);
         
-        //print(IsLocalPlayer);
-        return;
+        _game.OnStart();
         
+        return;
         if (NetworkData.IsOnlineGame)
         {
             NetworkData.IsLocalPlayer = IsLocalPlayer;
         }
+        
     }
 
     private Vector3 GetRandomPosition()

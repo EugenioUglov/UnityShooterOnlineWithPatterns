@@ -1462,6 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuPanel: {fileID: 1822243735}
   _sceneCamera: {fileID: 1492599193}
+  _game: {fileID: 1422033490}
 --- !u!114 &1822243738
 MonoBehaviour:
   m_ObjectHideFlags: 0

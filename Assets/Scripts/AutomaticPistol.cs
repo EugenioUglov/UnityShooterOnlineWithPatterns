@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AutomaticPistol : Gun
 {
-    private bool _isAttacking = false;
     
     private void Awake()
     {
@@ -18,19 +17,16 @@ public class AutomaticPistol : Gun
     
     public override void Attack()
     {
-        _isAttacking = true;
- 
         AttackServerRpc();
     }
     
     public override void StopAttack()
     {
-        _isAttacking = false;
         StopAttackServerRpc();
     }
 
 
-    private void GiveDamage()
+    private void TryGiveDamage()
     {
         if (Physics.Raycast(_muzzleTransform.position, _muzzleTransform.forward, out RaycastHit hit, 200f))
         {
@@ -49,8 +45,8 @@ public class AutomaticPistol : Gun
     [ServerRpc]
     public void AttackServerRpc()
     {
-        GiveDamage();
-
+        TryGiveDamage();
+        
         AttackClientRpc();
     }
     
@@ -64,7 +60,6 @@ public class AutomaticPistol : Gun
     [ClientRpc]
     private void AttackClientRpc()
     {
-        
         _shootBehavior.Shoot(_fireRate);
     }
     

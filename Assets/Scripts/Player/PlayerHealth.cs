@@ -10,8 +10,7 @@ public class PlayerHealth : Health
         
         if (_networkHealth.Value <= 0)
         {
-            if (OnHealthOver != null)
-                OnHealthOver();
+            OnHealthOver?.Invoke();
 
             _networkHealth.Value = 100;
             print("Health is over");

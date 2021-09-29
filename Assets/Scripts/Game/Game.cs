@@ -1,3 +1,4 @@
+using System;
 using MLAPI;
 using UnityEngine;
 
@@ -26,5 +27,10 @@ public class Game : NetworkBehaviour
         {
             _offlineGame.StartOfflineGame();
         }
+    }
+
+    public void OnStart()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

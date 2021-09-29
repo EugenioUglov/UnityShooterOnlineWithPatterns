@@ -31,29 +31,9 @@ public class PlayerMovement : NetworkBehaviour
         
         _rigidbody = GetComponent<Rigidbody>();
         _cameraTransform = _camera.transform;
-        
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void FixedUpdate()
-    {
-        if (_playerNetwork.IsPreformScriptLogic == false) return;
 
-        CheckMove();
-        CheckRotate();
-    }
-    
-    private void CheckMove()
-    {
-        MoveByInput();
-    }
-
-    private void CheckRotate()
-    {
-        RotateByMouse();
-    }
-        
-        
     private void MoveByInput()
     {       
         // Move by X axis.
@@ -66,6 +46,19 @@ public class PlayerMovement : NetworkBehaviour
         PerformMovement(velocity);
     }
     
+    public void MoveByInput(float horizontalInput, float verticalInput)
+    {       
+        // Move by X axis.
+        Vector3 horizontal = transform.right * horizontalInput;
+        // Move by Z axis.
+        Vector3 vertical = transform.forward * verticalInput;
+        Vector3 velocity = (horizontal + vertical).normalized * _speed;
+
+        
+        PerformMovement(velocity);
+    }
+    
+    
     private void PerformMovement(Vector3 moveVector)
     {       
         if (moveVector != Vector3.zero)
@@ -74,11 +67,23 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
     
+    
     private void RotateByMouse()
     {
         Vector3 rotation = new Vector3(0, _mouseInput.MouseRotation.x, 0) * _lookSensitivity;
         
         _pitch -= _mouseInput.MouseRotation.y * _lookSensitivity;
+        _pitch = Mathf.Clamp(_pitch, -45f, 45f);
+        Vector3 cameraRotation = new Vector3(_pitch, 0, 0);
+        
+        PerformRotation(rotation, cameraRotation);
+    }
+    
+    public void RotateByMouse(Vector2 mouseRotation)
+    {
+        Vector3 rotation = new Vector3(0, mouseRotation.x, 0) * _lookSensitivity;
+        
+        _pitch -= mouseRotation.y * _lookSensitivity;
         _pitch = Mathf.Clamp(_pitch, -45f, 45f);
         Vector3 cameraRotation = new Vector3(_pitch, 0, 0);
         
