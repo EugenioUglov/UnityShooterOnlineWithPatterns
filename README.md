@@ -25,3 +25,20 @@ All character logic is controlled by the PlayerController script. This script su
 <div align="center">
   <img src="https://i.ibb.co/6Pcrtsq/image.png" alt="image" border="0">
 </div>
+<br><br><br>
+
+Materials that helped in the creation of the project:
+<ul>
+  <li>
+    <a href="https://mp-docs.dl.it.unity3d.com/docs/getting-started/about-mlapi">Official MLAPI documentation</a>
+  </li>
+  <li>
+  <a href="https://www.youtube.com/watch?v=Dux5xGidEdc&list=PLbxeTux6kwSBxS567wiVk1j2aJP4ard6Y&index=2"> MLAPI in Unity 2021 - Tutorial on YouTube by SRCoder</a>
+  </li>
+  <li>
+    <a href="https://www.youtube.com/watch?v=qJMXv5J4wf4&list=PLbxeTux6kwSAseRmJeCyvkANHsI16PoM6&index=2"> MLAPI Tutorial 2020 - Tutorial on YouTube by SRCoder (Not actual Network tutorial)</a>
+  </li>
+  <li>
+    <a href="https://www.youtube.com/watch?v=UK57qdq_lak&list=PLPV2KyIb3jR5PhGqsO7G4PsbEC_Al-kPZ&index=1">uNet - Tutorial on YouTube by Brackeys (Not actual Network tutorial)</a>
+  </li>
+ </ul>
